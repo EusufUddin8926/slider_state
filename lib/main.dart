@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
             text: 'Start Market Visit',
             textStyle: const TextStyle(color: Colors.white, fontSize: 16),
             innerColor: Colors.yellow.withOpacity(0.4),
-            elevation: 0,
+            elevation: 4,
             height: 58,
             enabled: !isLoading,
             outerColor: Colors.blue.withOpacity(0.8),
