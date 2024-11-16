@@ -146,11 +146,6 @@ class SlideActionState extends State<SlideAction> with TickerProviderStateMixin 
                       child: Stack(
                         clipBehavior: Clip.antiAlias,
                         children: <Widget>[
-                          widget.submittedIcon ??
-                              Icon(
-                                Icons.done,
-                                color: widget.innerColor ?? Theme.of(context).primaryIconTheme.color,
-                              ),
                           Positioned.fill(
                             right: 0,
                             child: Transform(
@@ -207,6 +202,9 @@ class SlideActionState extends State<SlideAction> with TickerProviderStateMixin 
                                     // Immediately reset the slider position without any animations
                                     // await reset();
                                   }
+                                },
+                                onTap: () {
+                                  // Do nothing on tap
                                 },
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
