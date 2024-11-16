@@ -248,9 +248,26 @@ class SlideActionState extends State<SlideAction> with TickerProviderStateMixin 
 
   // Resets the slider to the start position when the trigger is not reached
   Future resetToStartPosition() async {
-    if (_progress < widget.trigger) {
-      await _cancelAnimation(); // Reset slider position smoothly
-    }
+    // Reset slider position smoothly to the left
+    final animation = Tween<double>(
+      begin: _dx,
+      end: 0,
+    ).animate(CurvedAnimation(
+      parent: _cancelAnimationController,
+      curve: Curves.fastOutSlowIn,
+    ));
+
+    _cancelAnimationController.reset();
+
+    animation.addListener(() {
+      if (mounted) {
+        setState(() {
+          _dx = animation.value;
+        });
+      }
+    });
+
+    await _cancelAnimationController.forward();
   }
 
   Future reset() async {
